@@ -20,8 +20,10 @@
     <!-- My Style -->
     <link rel="stylesheet" href="style.css" />
 
-
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
 
     <script src="app.js"></script>
   </head>
@@ -43,8 +45,12 @@
         <a href="#" id="search-button"><i data-feather="search"></i></a>
         <a href="#" id="shopping-cart-button">
           <i data-feather="shopping-cart"></i>
-          <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
-      </a>
+          <span
+            class="quantity-badge"
+            x-show="$store.cart.quantity"
+            x-text="$store.cart.quantity"
+          ></span>
+        </a>
         <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
       </div>
 
@@ -59,43 +65,55 @@
       <div class="shopping-cart">
         <template x-for="(item ,index) in $store.cart.items" x-keys="index">
           <div class="cart-item">
-          <img :src="`products/${item.img}`" :alt="item.name">
-          <div class="item-detail">
-            <h3 x-text="item.name"></h3>
-            <div class="item-price">
-              <span x-text="rupiah(item.price)"></span> &times;
-              <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
-              <span x-text="item.quantity"></span>
-              <button id="add" @click="$store .cart.add(item)">&plus;</button> &equals;
-              <span x-text="rupiah(item.total)"></span>
+            <img :src="`products/${item.img}`" :alt="item.name" />
+            <div class="item-detail">
+              <h3 x-text="item.name"></h3>
+              <div class="item-price">
+                <span x-text="rupiah(item.price)"></span> &times;
+                <button id="remove" @click="$store.cart.remove(item.id)">
+                  &minus;
+                </button>
+                <span x-text="item.quantity"></span>
+                <button id="add" @click="$store .cart.add(item)">&plus;</button>
+                &equals;
+                <span x-text="rupiah(item.total)"></span>
+              </div>
             </div>
-          </div>   
           </div>
-        </template> 
-        <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem;">Cart Is Empty</h4> 
-        <h4 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)">  </span></h4> 
+        </template>
+        <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem">
+          Cart Is Empty
+        </h4>
+        <h4 x-show="$store.cart.items.length">
+          Total : <span x-text="rupiah($store.cart.total)"> </span>
+        </h4>
 
         <div class="form-container" x-show="$store.cart.items.length">
           <form action="" id="checkoutForm">
             <h5>Customer Detail</h5>
           </form>
-        
+
           <label for="name">
             <span>Name</span>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" />
           </label>
           <label for="email">
             <span>Email</span>
-            <input type="Email" name="Email" id="Email">
+            <input type="Email" name="Email" id="Email" />
           </label>
-        <label for="phone">
-          <span>Phone</span>
-          <input type="number" name="phone" id="phone" autocomplete="off">
-        </label>
-        <button class="checkout-button" type="submit" id="checkout-button" value="">
-          Checkout
-        </button>
-      </div>
+          <label for="phone">
+            <span>Phone</span>
+            <input type="number" name="phone" id="phone" autocomplete="off" />
+          </label>
+          <button
+            class="checkout-button"
+            type="submit"
+            id="checkout-button"
+            value=""
+          >
+            Checkout
+          </button>
+        </div>
       </div>
       <!-- Shopping Cart end -->
     </nav>
@@ -105,9 +123,6 @@
     <section class="Hero" id="home">
       <main class="content">
         <h1>Mengenyangkan <span>Menyegarkan </span></h1>
-        <a href="#" class="pua">
-           </i>Buy Now</a
-        >
       </main>
     </section>
     <!-- Hero Section end -->
@@ -123,13 +138,10 @@
         <div class="content">
           <h3>Lapar atau haus? Metschool F&B solusinya</h3>
           <p>
-            MeteschooF&B menyajikan berbagai macam makanan lezat, dan dilengkapi dengan minuman yang menyegarkan, 
-
-
+            MeteschooF&B menyajikan berbagai macam makanan lezat, dan dilengkapi
+            dengan minuman yang menyegarkan,
           </p>
-          <p> 
-            Melengkapi dengan yang lengkap, Lapar dan haus.
-          </p>
+          <p>Melengkapi dengan yang lengkap, Lapar dan haus.</p>
         </div>
       </div>
     </section>
@@ -138,7 +150,7 @@
     <!-- Menu Section start -->
     <section id="menu" class="menu">
       <h2><span>Menu</span> Kami</h2>
-     
+
       <div class="row">
         <div class="menu-card">
           <img
@@ -215,110 +227,112 @@
       </div>
     </section>
     <!-- Products Section end -->
-<!-- Products Section start -->
-  <section class="products" id="products" x-data="products">
-    <h2><span>Produk Unggulan</span> Kami</h2>
+    <!-- Products Section start -->
+    <section class="products" id="products" x-data="products">
+      <h2><span>Produk Unggulan</span> Kami</h2>
 
-    <div class="row">
-      <template x-for="(item, index) in items" x-key="index">
-      <div class="product-card">
-        <div class="product-icons">
-          <a href="#" @click.prevent="$store.cart.add(item)">
-            <svg
-    width="24"
-    height="24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
-    <use href="img/feather-sprite.svg#shopping-cart" />
-  </svg>
-          </a>
-          <a href="" class="item-detail-button">
-            <svg
-    width="24"
-    height="24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
-    <use href="img/feather-sprite.svg#eye" />
-  </svg>
-        </a>
+      <div class="row">
+        <template x-for="(item, index) in items" x-key="index">
+          <div class="product-card">
+            <div class="product-icons">
+              <a href="#" @click.prevent="$store.cart.add(item)">
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#shopping-cart" />
+                </svg>
+              </a>
+              <a href="" class="item-detail-button">
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#eye" />
+                </svg>
+              </a>
+            </div>
+            <div class="product-image">
+              <img :src="`products/${item.img}`" :alt="item.name" />
+            </div>
+            <div class="product-content">
+              <h3 x-text="item.name"></h3>
+              <div class="product-stars">
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+              </div>
+              <div class="product-price">
+                <span x-text="rupiah(item.price)"> </span>
+              </div>
+            </div>
+          </div>
+        </template>
       </div>
-      <div class="product-image">
-        <img :src="`products/${item.img}`" :alt="item.name">
-      </div>
-      <div class="product-content">
-        <h3 x-text="item.name"></h3>
-        <div class="product-stars">
-          <svg
-  width="24"
-  height="24"
-  fill="currentColor"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <use href="img/feather-sprite.svg#star" />
-</svg>
-          <svg
-  width="24"
-  height="24"
-  fill="currentColor"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <use href="img/feather-sprite.svg#star" />
-</svg>
-          <svg
-  width="24"
-  height="24"
-  fill="currentColor"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <use href="img/feather-sprite.svg#star" />
-</svg>
-          <svg
-  width="24"
-  height="24"
-  fill="currentColor"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <use href="img/feather-sprite.svg#star" />
-</svg>
-          <svg
-  width="24"
-  height="24"
-  fill="currentColor"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <use href="img/feather-sprite.svg#star" />
-</svg>
-        </div>
-        <div class="product-price"><span x-text="rupiah(item.price)"> </span></div>
-      </div>
-    </div>
-  </template>
-  </div>
-</section>
-<!-- Products Section end -->
+    </section>
+    <!-- Products Section end -->
     <!-- Contact Section start -->
     <section id="contact" class="contact">
       <h2><span>Temukan</span> Kami</h2>
@@ -329,8 +343,6 @@
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
-
-        
       </div>
     </section>
     <!-- Contact Section end -->
@@ -338,9 +350,15 @@
     <!-- Footer start -->
     <footer>
       <div class="socials">
-        <a href="https://www.instagram.com/smkmetland?igsh=MXQzNXdiMDF4eHRoaw=="><i data-feather="instagram"></i></a>
-        <a href="https://www.facebook.com/SMKMetland/?locale=id_ID"><i data-feather="youtube"></i></a>
-        <a href="https://www.youtube.com/@MetlandSchool"><i data-feather="facebook"></i></a>
+        <a href="https://www.instagram.com/smkmetland?igsh=MXQzNXdiMDF4eHRoaw=="
+          ><i data-feather="instagram"></i
+        ></a>
+        <a href="https://www.facebook.com/SMKMetland/?locale=id_ID"
+          ><i data-feather="youtube"></i
+        ></a>
+        <a href="https://www.youtube.com/@MetlandSchool"
+          ><i data-feather="facebook"></i
+        ></a>
       </div>
 
       <div class="links">
